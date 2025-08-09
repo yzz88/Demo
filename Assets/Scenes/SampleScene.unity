@@ -211,7 +211,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u54E5\u8212\u4E34"
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 013d6b83b0e07694894b61fce8328600, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 013d6b83b0e07694894b61fce8328600,
@@ -257,7 +258,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -746,7 +747,7 @@ GameObject:
   - component: {fileID: 1007230496}
   - component: {fileID: 1007230499}
   - component: {fileID: 1007230498}
-  - component: {fileID: 1007230497}
+  - component: {fileID: 1007230500}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -770,27 +771,6 @@ Transform:
   - {fileID: 101754952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1007230497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007230495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2c16062054bce44b3b45464e824a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 1007230499}
-  _moveSpeed: 0
-  _detectionMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _detectionMaxDistance: 0.14
-  _gravityMutiple: 1.5
-  _detectionObj: {fileID: 1571294507}
-  _isGrounded: 1
 --- !u!143 &1007230498
 CharacterController:
   m_ObjectHideFlags: 0
@@ -826,8 +806,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007230495}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 013d6b83b0e07694894b61fce8328600, type: 3}
+  m_Controller: {fileID: 9100000, guid: e73e8fb59ea4ae448983d39b11936bf5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -838,6 +818,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1007230500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007230495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbdeda60c729774fb53ad77a242cde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _moveSpeed: 0.75
+  _detectionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _detectionMaxDistance: 0.14
+  _gravityMutiple: 1.5
+  _detectionObj: {fileID: 1571294507}
+  _isGrounded: 0
+  rotateSmooth: 8
 --- !u!1 &1369856457
 GameObject:
   m_ObjectHideFlags: 0
