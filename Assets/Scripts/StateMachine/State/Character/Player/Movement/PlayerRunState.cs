@@ -20,14 +20,14 @@ public class PlayerRunState : PlayerBaseMovementState
 
     protected override void OnUpdate()
     {
-        base.OnUpdate();
-        if (!GameInputManager.MainInstance._hasMovementInput)
-        {
-            mFSM.ChangeState(E_PlayerState.Idle);
-        }
         if (!GameInputManager.MainInstance._RunIsTriggered)
         {
             mFSM.ChangeState(E_PlayerState.Walk);
+        }
+        //如果在奔跑状态下 wasd没有按 就进入奔跑停止
+        if (!GameInputManager.MainInstance._hasMovementInput)
+        {
+            mFSM.ChangeState(E_PlayerState.RunStop);
         }
     }
     protected override void OnExit()

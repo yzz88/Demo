@@ -11,7 +11,6 @@ public class PlayerIdleState : PlayerBaseMovementState
 
     protected override void OnUpdate()
     {
-        base.OnUpdate();
         if(GameInputManager.MainInstance._hasMovementInput)
         {
             if(GameInputManager.MainInstance._RunIsTriggered)

@@ -21,13 +21,13 @@ public class PlayerWalkState : PlayerBaseMovementState
     protected override void OnUpdate()
     {
         base.OnUpdate();
-        if (!GameInputManager.MainInstance._hasMovementInput)
-        {
-            mFSM.ChangeState(E_PlayerState.Idle);
-        }
         if (GameInputManager.MainInstance._RunIsTriggered)
         {
             mFSM.ChangeState(E_PlayerState.Run);
+        }
+        if (!GameInputManager.MainInstance._hasMovementInput)
+        {
+            mFSM.ChangeState(E_PlayerState.WalkStop);
         }
     }
     protected override void OnExit()

@@ -7,5 +7,7 @@ public enum E_PlayerState
     Idle,//待机
     Walk,//行走
     Run,//奔跑
+    WalkStop,//行走停止
+    RunStop,//奔跑停止
     Attack,//攻击
 }
