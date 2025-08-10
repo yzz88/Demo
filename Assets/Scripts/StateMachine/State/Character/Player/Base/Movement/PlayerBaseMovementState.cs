@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using QFramework;
-using UnityEngine;
 /// <summary>
 /// 第一个参数是这个状态是属于哪个状态枚举的
 /// 第二个参数是这个状态作用于哪个对象
@@ -19,7 +17,18 @@ public class PlayerBaseMovementState : AbstractState<E_PlayerState, CharacterCon
     }
     protected override void OnUpdate()
     {
-        
+        if(GameInputManager.MainInstance._LAttackTriggered)
+        {
+            mFSM.ChangeState(E_PlayerState.Null);
+        }
+        if(mFSM.CurrentStateId == E_PlayerState.Null)
+        {
+            if (GameInputManager.MainInstance._hasMovementInput)
+            {
+                mFSM.ChangeState(E_PlayerState.Walk);
+            }
+            
+        }
     }
     //这里要在update里检测玩家输入攻击指令
     //写这个移动状态基类的原因就是

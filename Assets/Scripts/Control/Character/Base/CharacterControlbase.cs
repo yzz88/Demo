@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator),typeof(CharacterController))]
@@ -8,6 +9,7 @@ public class CharacterControlbase : MonoBehaviour
     private CharacterController _cc;//角色控制器
     #endregion
     #region 声明变量
+    public List<CombatData> comboDataList;//连招表
     [SerializeField,Header("移动速度")] private float _moveSpeed;
     [SerializeField, Header("地面检测层级")] private LayerMask _detectionMask;
     [SerializeField, Header("球形检测的最远距离")] private float _detectionMaxDistance;
@@ -69,6 +71,23 @@ public class CharacterControlbase : MonoBehaviour
         }
         
         
+    }
+
+    /// <summary>
+    /// 尝试获取一个招式
+    /// </summary>
+    public CombatData TryGetOneCombatData(string comboName)
+    {
+        //如果招式表中的某个招式名字与传进来的招式名字一样则返回该具体招式
+        foreach (CombatData combat in comboDataList)
+        {
+            if (combat.comboName == comboName)
+            {
+                return combat;
+            }
+        }
+        Debug.Log("未找到相关数据");
+        return null;
     }
 
 }

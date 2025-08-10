@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class PlayerControl : CharacterControlbase
 {
-    FSM<E_PlayerState> FSM;
+    private FSM<E_PlayerState> FSM;
+    protected FSM<E_PlayerCombat> combatFSM;
     [SerializeField,Header("Ðý×ªÆ½»¬¶È")] private float rotateSmooth;
     protected override void Awake()
     {
@@ -17,6 +18,7 @@ public class PlayerControl : CharacterControlbase
         FSM.AddState(E_PlayerState.Run, new PlayerRunState(FSM, this));
         FSM.AddState(E_PlayerState.WalkStop, new PlayerWalkStopState(FSM, this));
         FSM.AddState(E_PlayerState.RunStop, new PlayerRunStopState(FSM, this));
+        FSM.AddState(E_PlayerState.Null,new PlayerMovementNullState(FSM, this));
         FSM.StartState(E_PlayerState.Idle);
     }
     protected override void OnAnimatorMove()
@@ -26,7 +28,7 @@ public class PlayerControl : CharacterControlbase
     protected override void Update()
     {
         base.Update();
-        FSM.Update();
+        FSM?.Update();
         Rotate();
     }
     /// <summary>

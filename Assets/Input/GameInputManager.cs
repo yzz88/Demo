@@ -10,6 +10,8 @@ public class GameInputManager : SingletonMono<GameInputManager>
     public bool _hasMovementInput;//wasd是否有输入
 
     public bool _RunIsTriggered;//奔跑键是否持续按下
+
+    public bool _LAttackTriggered;//左键攻击是否按下
     public PlayerInputActions.PlayerActions playerActions{ get; private set; }
     protected override void Awake()
     {
@@ -20,6 +22,7 @@ public class GameInputManager : SingletonMono<GameInputManager>
 
     private void Update()
     {
+        _LAttackTriggered = playerActions.LAttack.triggered;
         _hasMovementInput = playerActions.Move.ReadValue<Vector2>() != Vector2.zero;
         _RunIsTriggered = playerActions.Run.IsPressed();
         _moveDirection = playerActions.Move.ReadValue<Vector2>().normalized;
